@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido Premium - Menú Exclusivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(25, 25, 40, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(120, 119, 198, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        * > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff7eb3, #65c7f7, #9dffb0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0d0;
+            margin-bottom: 5px;
+        }
+        
+        .content-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-box i {
+            color: #ffcc00;
+        }
+        
+        .reassurance {
+            background: rgba(30, 150, 200, 0.15);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #65c7f7;
+        }
+        
+        .reassurance p {
+            font-size: 1.1rem;
+            color: #c2e6ff;
+        }
+        
+        .menu-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .menu-btn {
+            background: linear-gradient(145deg, #2d2d4d, #23233a);
+            border: none;
+            border-radius: 15px;
+            padding: 25px 20px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .menu-btn:hover::before {
+            left: 100%;
+        }
+        
+        .menu-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(145deg, #3a3a62, #2d2d4d);
+        }
+        
+        .menu-btn:active {
+            transform: translateY(0);
+        }
+        
+        .menu-btn i {
+            font-size: 2.5rem;
+        }
+        
+        .btn-1 {
+            border-top: 4px solid #ff7eb3;
+        }
+        
+        .btn-1 i {
+            color: #ff7eb3;
+        }
+        
+        .btn-2 {
+            border-top: 4px solid #65c7f7;
+        }
+        
+        .btn-2 i {
+            color: #65c7f7;
+        }
+        
+        .btn-3 {
+            border-top: 4px solid #9dffb0;
+        }
+        
+        .btn-3 i {
+            color: #9dffb0;
+        }
+        
+        .btn-4 {
+            border-top: 4px solid #ffcc00;
+        }
+        
+        .btn-4 i {
+            color: #ffcc00;
+        }
+        
+        .link-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #a0a0d0;
+        }
+        
+        footer {
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 10px;
+        }
+        
+        /* Efectos de clic */
+        .clicked {
+            animation: clickEffect 0.5s ease;
+        }
+        
+        @keyframes clickEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-gem"></i> Contenido Premium</h1>
+            <p class="subtitle">Acceso exclusivo a los mejores contenidos</p>
+            
+            <div class="content-stats">
+                <div class="stat-box">
+                    <i class="fas fa-eye"></i>
+                    <span>3,828,232 vistas</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span>98% Satisfacción</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="reassurance">
+            <p><i class="fas fa-shield-alt"></i> No te preocupes, no hay anuncios ni nada por el estilo. Disfruta del contenido sin interrupciones.</p>
+        </div>
+        
+        <div class="menu-buttons">
+            <button class="menu-btn btn-1" data-link="https://nowplaytoc.com/1995868611902058497">
+                <i class="fas fa-star"></i>
+                <span>Presiona aquí para ver el contenido</span>
+            </button>
+            
+            <button class="menu-btn btn-2" data-link="https://nowplaytoc.com/1995868611902058497">
+                <i class="fas fa-fire"></i>
+                <span>Contenido HOT super rico</span>
+            </button>
+            
+            <button class="menu-btn btn-3" data-link="https://nowplaytoc.com/1995868611902058497">
+                <i class="fas fa-folder-open"></i>
+                <span>Mira carpetas aquí ricas</span>
+            </button>
+            
+            <button class="menu-btn btn-4" data-link="https://nowplaytoc.com/1995868611902058497">
+                <i class="fas fa-crown"></i>
+                <span>Mira contenido aquí rico</span>
+            </button>
+        </div>
+        
+        <div class="link-info">
+            <p><i class="fas fa-link"></i> Todos los botones dirigen al mismo enlace exclusivo: <span id="link-display">https://nowplaytoc.com/1995868611902058497</span></p>
+        </div>
+        
+        <footer>
+            <p>Más de 3 millones de personas han visto estos botones y al 98% les han gustado, al otro 2% no.</p>
+            <p class="disclaimer">Esta página es un ejemplo de diseño web. Todos los botones redirigen al mismo enlace proporcionado.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.menu-btn');
+            const linkDisplay = document.getElementById('link-display');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Efecto visual al hacer clic
+                    this.classList.add('clicked');
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                    }, 500);
+                    
+                    // Mostrar mensaje de redirección
+                    const originalText = this.querySelector('span').textContent;
+                    this.querySelector('span').textContent = 'Redirigiendo...';
+                    
+                    // Simular un pequeño retraso antes de redirigir para mejor experiencia de usuario
+                    setTimeout(() => {
+                        // Obtener el enlace del botón
+                        const link = this.getAttribute('data-link');
+                        // Redirigir a la página
+                        window.open(link, '_blank');
+                        
+                        // Restaurar texto original después de un momento
+                        setTimeout(() => {
+                            this.querySelector('span').textContent = originalText;
+                        }, 1000);
+                    }, 800);
+                });
+            });
+            
+            // Efecto de escritura para el enlace
+            const linkText = "https://nowplaytoc.com/1995868611902058497";
+            let i = 0;
+            linkDisplay.textContent = "";
+            
+            function typeWriter() {
+                if (i < linkText.length) {
+                    linkDisplay.textContent += linkText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Iniciar efecto de escritura después de un breve retraso
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
+</body>
+</html>
